@@ -54,14 +54,44 @@ plot(airq ~ vala, data = Airq) # Gráfico da regressão linear
 # Se p-valor < 0.05 a variável é significativa (existe um efeito)
 # Se p-valor > 0.05 não existe o efeito esperado
 
-# A variável "vala" não influenciou na qualidade do ar ("airq")
+# A variável "vala" NÃO influenciou na qualidade do ar ("airq")
 
 # A variável "coas" afeta a variável "airq"? 
 
 m2 <- lm (airq ~ coas, data = Airq) # Utilizando uma variável categórica
 summary(m2) # Significancia do modelo
 
-# Sim! A posição da costeira da cidade influencia na qualidade do ar
+# SIM! A posição da costeira da cidade influencia na qualidade do ar
 
 plot(airq ~ coas, data = Airq)
 # As cidades costeiras apresentam uma melhor qualidade do ar
+
+# A variável "medi" afeta a qualidade do ar?
+m3 <- lm (airq ~ medi, data = Airq)
+summary(m3)
+plot(airq ~ medi, data = Airq)
+# A variável NÃO afetou a qualidade do ar
+
+# A quantidade de chuva influencia na qualidade do ar? 
+m4 <- lm (airq ~ rain, data =  Airq)
+summary(m4)
+plot(airq ~ rain, data = Airq)
+# A quantidade NÃO influencia na qualidade do ar
+
+# A densidade populacional influencia na qualidade do ar? 
+m5 <- lm(airq ~ dens, data = Airq)
+summary(m5)
+plot(airq ~ dens, data = Airq)
+# A densidade NÃO influencia na qualidade do ar
+
+# *** Retas de modelos não significativos são OPCIONAIS nos gráficos ***
+# Retas nos gráficos:
+plot(airq ~ medi, data = Airq)
+
+# y = a+b*x 
+# a = Intercepto (onde a reta vai tocar no eixo y)
+# b = É a inclinação da reta
+# add = Adicionando a reta no mesmo gráfico
+
+summary(m3) # Coletando o intercepto e a inclinação
+curve(9.936e+01+5.638e-04*x, add=TRUE)
