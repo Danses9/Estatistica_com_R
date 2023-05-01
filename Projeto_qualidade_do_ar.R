@@ -36,3 +36,22 @@ plot(airq~vala, data=Airq) # Variável resposta EM FUNÇÃO DE variável explica
 # y (crescimento da planta) ~ x (adubo) + x (quantidade de luz)
 # y ~ x1 + x2 + x3
 # airq ~ vala + coas + rain
+
+# ***************************************************************************************************
+# ***************************************************************************************************
+
+# Montanto o modelo de REGRESSÃO LINEAR
+
+# m1 recebe lm (modelo linear) variável resposta em função variável explicativa, no BD (informar onde encontrar os dados)
+m1 <- lm (airq ~ vala, data = Airq)
+
+# Alguns dados odem não ser lineares 
+
+summary(m1)
+
+# O p-valor indica a significancia do modelo ou variável
+# Se p-valor < 0.05 a variável é significativa (existe um efeito)
+# Se p-valor > 0.05 não existe o efeito esperado
+
+# A variável "vala" não influenciou na qualidade do ar ("airq")
+
