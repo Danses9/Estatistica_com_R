@@ -96,7 +96,7 @@ plot(airq ~ medi, data = Airq)
 summary(m3) # Coletando o intercepto e a inclinação
 curve(9.936e+01+5.638e-04*x, add=TRUE)
 
-# Melhorando o gráfico
+# Melhorando os gráficos
 
 # curve   = É a reta, um comando que realiza retas e curvas
 # xlab    = Renomeando o eixo x
@@ -107,10 +107,39 @@ curve(9.936e+01+5.638e-04*x, add=TRUE)
 # main    = Título do gráfico
 #lwd      = Largura da linha
 #lty      = Espessura da linha
+#ylim     = Seleciona os limites do gráfico
 
 plot(airq ~ medi, data = Airq, xlab= "Renda média per capita", 
                                ylab= "Qualidade do ar", pch = 8,
-                               col = "#ff6f9c", cex.lab = 1.3, 
+                               col = "#f31087", cex.lab = 1.5, 
                                main = "Renda média - 2010")
 
 curve(9.936e+01+5.638e-04*x, add=TRUE, col = "#ff6347", lwd = 2, lty =2)
+
+# Modelo m1
+plot(airq ~ vala, data = Airq, xlab = "Valor das empresas ($)",
+                               ylab = "Qualidade do ar", col = "darkblue",
+                               pch = 1, cex.lab = 1.5)
+summary(m1)
+curve(96.451419+0.001969*x, add=TRUE, col = "red", lwd = 2, lty = 1)
+
+# Modificando o boxplot 
+plot(airq ~ coas, data= Airq, xlab = "Posição costeira", 
+                              ylab = "Qualidade do ar", col = "#ff6f9c",
+                              ylim = c(50,170), cex.lab = 1.3,
+                              main = "Análise da qualidade do ar")
+
+# ***************************************************************************************************
+# ***************************************************************************************************
+# Termos:
+# Anova = Variável contínua ~ uma variável categórica 
+#(compara variâncias entre as medianas de diferentes variáveis)
+# Regressão = Variável continua ~ variável contínua
+# Regressão multipla = variável contínua ~ variáveis contínuas ou não
+
+# Regressão multipla
+mRM1 <- lm(airq ~ vala + coas, data = Airq)
+summary(mRM1)
+
+# Existe um efeito da posição costeira e do valor das empresas na
+# qualidade do ar
