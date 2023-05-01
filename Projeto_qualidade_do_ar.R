@@ -28,3 +28,11 @@ summary(Airq) # Sumário das variáveis
 
 # Gerando um gráfico simples
 plot(airq~vala, data=Airq) # Variável resposta EM FUNÇÃO DE variável explicativa, no banco de dados
+
+# Criando um modelo estatístico 
+# y (resposta) ~ (em função) x (explicativa)
+
+# Para trabalhar com outras variáveis no nosso modelo, utilizamos o "+"
+# y (crescimento da planta) ~ x (adubo) + x (quantidade de luz)
+# y ~ x1 + x2 + x3
+# airq ~ vala + coas + rain
