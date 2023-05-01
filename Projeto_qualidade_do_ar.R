@@ -45,9 +45,10 @@ plot(airq~vala, data=Airq) # Variável resposta EM FUNÇÃO DE variável explica
 # m1 recebe lm (modelo linear) variável resposta em função variável explicativa, no BD (informar onde encontrar os dados)
 m1 <- lm (airq ~ vala, data = Airq)
 
-# Alguns dados odem não ser lineares 
+# Alguns dados podem não ser lineares 
 
-summary(m1)
+summary(m1) # Significancia do modelo
+plot(airq ~ vala, data = Airq) # Gráfico da regressão linear
 
 # O p-valor indica a significancia do modelo ou variável
 # Se p-valor < 0.05 a variável é significativa (existe um efeito)
@@ -55,3 +56,12 @@ summary(m1)
 
 # A variável "vala" não influenciou na qualidade do ar ("airq")
 
+# A variável "coas" afeta a variável "airq"? 
+
+m2 <- lm (airq ~ coas, data = Airq) # Utilizando uma variável categórica
+summary(m2) # Significancia do modelo
+
+# Sim! A posição da costeira da cidade influencia na qualidade do ar
+
+plot(airq ~ coas, data = Airq)
+# As cidades costeiras apresentam uma melhor qualidade do ar
