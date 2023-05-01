@@ -95,3 +95,22 @@ plot(airq ~ medi, data = Airq)
 
 summary(m3) # Coletando o intercepto e a inclinação
 curve(9.936e+01+5.638e-04*x, add=TRUE)
+
+# Melhorando o gráfico
+
+# curve   = É a reta, um comando que realiza retas e curvas
+# xlab    = Renomeando o eixo x
+# ylab    = Renomeando o eixo y
+# pch     = Caracteres dos pontos
+# col     = Cor 
+# cex.lab = Modifica o tamanho do eixo (< ou >)
+# main    = Título do gráfico
+#lwd      = Largura da linha
+#lty      = Espessura da linha
+
+plot(airq ~ medi, data = Airq, xlab= "Renda média per capita", 
+                               ylab= "Qualidade do ar", pch = 8,
+                               col = "#ff6f9c", cex.lab = 1.3, 
+                               main = "Renda média - 2010")
+
+curve(9.936e+01+5.638e-04*x, add=TRUE, col = "#ff6347", lwd = 2, lty =2)
