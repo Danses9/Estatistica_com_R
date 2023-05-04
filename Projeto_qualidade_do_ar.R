@@ -1,6 +1,6 @@
 # PROJETO DO CURSO: "O que afeta a qualidade do ar e como é afetado?"
 # Autor: Danna SES
-
+# ------------------------------------------------------------------------
 
 # Install packages Ecdat - Para extrair informações do banco de dados
 # install.packages(Ecdat) 
@@ -22,8 +22,10 @@ names(Airq)    # Exibe o nome das variáveis
 # Medi: Renda média per capita (dólares)
 
 # Análise descritiva ou exploratória
+# ------------------------------------------------------------------------
 
 summary(Airq) # Sumário das variáveis 
+
 # As variáveis podem ser contínuas ou categóricas 
 
 # Gerando um gráfico simples
@@ -37,8 +39,8 @@ plot(airq~vala, data=Airq) # Variável resposta EM FUNÇÃO DE variável explica
 # y ~ x1 + x2 + x3
 # airq ~ vala + coas + rain
 
-# ***************************************************************************************************
-# ***************************************************************************************************
+# ------------------------------------------------------------------------
+# ------------------------------------------------------------------------
 
 # Montanto o modelo de REGRESSÃO LINEAR
 
@@ -129,11 +131,10 @@ plot(airq ~ coas, data= Airq, xlab = "Posição costeira",
                               ylim = c(50,170), cex.lab = 1.3,
                               main = "Análise da qualidade do ar")
 
-# ***************************************************************************************************
-# ***************************************************************************************************
+# ------------------------------------------------------------------------
 # Termos:
 # Anova = Variável contínua ~ uma variável categórica 
-#(compara variâncias entre as medianas de diferentes variáveis)
+# (compara variâncias entre as medianas de diferentes variáveis)
 # Regressão = Variável continua ~ variável contínua
 # Regressão multipla = variável contínua ~ variáveis contínuas ou não
 
@@ -165,7 +166,9 @@ legend("bottomright", c("Não costeiras", "Costeiras"), pch = 1,
 mRM2 <- lm(airq ~ vala + coas + dens, data = Airq)
 summary(mRM2)
 
-# Constraste de modelos
+# ------------------------------------------------------------------------
+# Constrastes de modelos
+
 # Compara um modelo completo com um modelo sem a variavel em "questão"
 modelocompleto <- lm(airq ~ vala + coas + dens, data = Airq)
 modeloincompleto <- lm(airq ~ vala + coas, data = Airq)
@@ -178,3 +181,24 @@ modeloincompleto <- lm(airq ~ vala + coas, data = Airq)
 
 # Análise de variância entre os modelos, comparando eles
 anova(modelocompleto, modeloincompleto) 
+
+#------------------------------------------------------------------------
+# Gráfico final 
+
+plot(airq ~ vala, data=Airq, xlab = "Valor das empresas($)",
+     ylab = "Qualidade do ar", cex.lab = 1.3, 
+     pch = 8, col = "blue")
+
+curve(1.171e+02+1.999e-03*x, add=TRUE, col = "red", lwd = 1.4) # Cidade não costeira
+curve(1.171e+02+1.999e-03*x+-2.968e+01,lty = 2, add=TRUE,
+        col = "red", lwd = 1.4) # Cidade costeira
+
+# Incluindo legenda ()
+legend("bottomright", c("Não costeiras", "Costeiras"), pch = 1,
+       lty=c(1,2), bty = "n", col =c("red","red"))
+
+# Conclusão:
+# As variáveis que afetaram foram: O valor das empresas e a posição costeira
+# das cidades. Quanto maior o valor da empresa, pior é a qualidade do ar.
+# Cidades costeiras apresentam a melhor qualidade do ar.
+
