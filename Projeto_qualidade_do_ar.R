@@ -105,9 +105,9 @@ curve(9.936e+01+5.638e-04*x, add=TRUE)
 # col     = Cor 
 # cex.lab = Modifica o tamanho do eixo (< ou >)
 # main    = Título do gráfico
-#lwd      = Largura da linha
-#lty      = Espessura da linha
-#ylim     = Seleciona os limites do gráfico
+# lwd     = Largura da linha
+# lty     = Espessura da linha
+# ylim    = Seleciona os limites do gráfico
 
 plot(airq ~ medi, data = Airq, xlab= "Renda média per capita", 
                                ylab= "Qualidade do ar", pch = 8,
@@ -143,3 +143,19 @@ summary(mRM1)
 
 # Existe um efeito da posição costeira e do valor das empresas na
 # qualidade do ar
+
+# Grafico regressão multipla 
+plot(airq ~ vala, data=Airq, xlab = "Valor das empresas($)",
+                             ylab = "Qualidade do ar")
+
+curve(1.171e+02+1.999e-03*x, add=TRUE) # Cidade não costeira
+curve(1.171e+02+1.999e-03*x+-2.968e+01,lty = 2, add=TRUE) # Cidade costeira
+
+# Incluindo legenda ()
+legend("bottomright", c("Não costeiras", "Costeiras"), pch = 1,
+       lty=c(1,2), bty = "n")
+
+# A qualidade do ar das cidades é afetada tanto pelo valor das empresas
+# quanto pela posição costeira das cidades. Quando maior o valor das empresas,
+# pior a qualidade do ar das cidades. Além disso, as cidades não costeiras
+# apresentam uma qualidade de ar pior do que as cidades costeiras. 
