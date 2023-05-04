@@ -164,3 +164,17 @@ legend("bottomright", c("Não costeiras", "Costeiras"), pch = 1,
 # Aumentando o tamanho dos modelos
 mRM2 <- lm(airq ~ vala + coas + dens, data = Airq)
 summary(mRM2)
+
+# Constraste de modelos
+# Compara um modelo completo com um modelo sem a variavel em "questão"
+modelocompleto <- lm(airq ~ vala + coas + dens, data = Airq)
+modeloincompleto <- lm(airq ~ vala + coas, data = Airq)
+
+# Os modelos são iguais? 
+# Se p > 0.05: não existe diferença entre os modelos, então seguimos
+# com o modelo mais simples. 
+# Se p < 0.05: os modelos são diferentes e a variável não 
+# deve ser retirada do modelo. 
+
+# Análise de variância entre os modelos, comparando eles
+anova(modelocompleto, modeloincompleto) 
