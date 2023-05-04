@@ -159,3 +159,8 @@ legend("bottomright", c("Não costeiras", "Costeiras"), pch = 1,
 # quanto pela posição costeira das cidades. Quando maior o valor das empresas,
 # pior a qualidade do ar das cidades. Além disso, as cidades não costeiras
 # apresentam uma qualidade de ar pior do que as cidades costeiras. 
+
+
+# Aumentando o tamanho dos modelos
+mRM2 <- lm(airq ~ vala + coas + dens, data = Airq)
+summary(mRM2)
